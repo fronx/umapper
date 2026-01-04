@@ -1,0 +1,46 @@
+{
+  "name": "umapper",
+  "version": "0.1.0",
+  "description": "UMAP-inspired layout algorithm for k-NN graphs",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --config vite.lib.config.ts",
+    "build:lib": "vite build --config vite.lib.config.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build:lib",
+    "link:local": "npm run build:lib && npm link"
+  },
+  "keywords": [
+    "umap",
+    "dimensionality-reduction",
+    "visualization",
+    "layout",
+    "knn",
+    "graph",
+    "embeddings"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.0.0"
+  }
+}
