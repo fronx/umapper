@@ -176,6 +176,28 @@ This implements a UMAP-inspired layout in JavaScript:
    - Front-loaded alpha schedule for initial mixing
    - Adaptive parameters based on graph size
 
+## Using with Electron
+
+When using umapper in an Electron app during development:
+
+### Local Development
+
+Use `file:` protocol in package.json (not `npm link`):
+
+```json
+{
+  "dependencies": {
+    "umapper": "file:../path/to/umapper"
+  }
+}
+```
+
+### Renderer vs Main Process
+
+umapper works best when imported in the **renderer process** (bundled by Vite/webpack). If you need shared utilities like `calculateK` in the main process, keep a local copy rather than importing from umapper - this avoids ESM/CJS resolution issues with symlinked packages.
+
+See [MusicMapper's local-npm-packages guide](https://github.com/fronx/musicmapper.electron/blob/main/docs/guides/local-npm-packages.md) for detailed patterns.
+
 ## License
 
 MIT
